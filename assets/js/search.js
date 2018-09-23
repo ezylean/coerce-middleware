@@ -1,0 +1,3 @@
+var typedoc = typedoc || {};
+            typedoc.search = typedoc.search || {};
+            typedoc.search.data = {"kinds":{"64":"Function"},"rows":[{"id":0,"kind":64,"name":"coerce","url":"globals.html#coerce","classes":"tsd-kind-function"},{"id":1,"kind":64,"name":"isInt","url":"globals.html#isint","classes":"tsd-kind-function tsd-is-not-exported"},{"id":2,"kind":64,"name":"isDecimal","url":"globals.html#isdecimal","classes":"tsd-kind-function tsd-is-not-exported"},{"id":3,"kind":64,"name":"defaultCoercePrimitive","url":"globals.html#defaultcoerceprimitive","classes":"tsd-kind-function tsd-is-not-exported"}]};
