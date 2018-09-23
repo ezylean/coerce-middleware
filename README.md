@@ -44,7 +44,7 @@
 
 ## Why
 
-Validation logic become simpler when it's possible to expect "typed" datas, but any datas parsed from url like req.query or req.params are strings.
+Validation logic become simpler when it's possible to expect "typed" datas, but datas parsed from url like req.query or req.params are strings.
 
 ## Install
 
