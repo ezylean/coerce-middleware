@@ -1,13 +1,20 @@
 {
   "name": "@ezy/coerce-middleware",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "coerce any property in req object",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
   "repository": "https://github.com/ezylean/coerce-middleware",
   "license": "MIT",
-  "keywords": ["node", "express", "middleware", "type", "conversion", "coercion"],
+  "keywords": [
+    "node",
+    "express",
+    "middleware",
+    "type",
+    "conversion",
+    "coercion"
+  ],
   "scripts": {
     "info": "npm-scripts-info",
     "build": "run-s clean && run-p build:*",
