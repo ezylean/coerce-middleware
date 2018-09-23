@@ -38,8 +38,12 @@
 <a href="https://npm.runkit.com/@ezy/coerce-middleware">
   <img src="https://img.shields.io/badge/runkit-try%20now-%236967CA.svg" alt="Runkit: try now" />
 </a>
-<img src="https://img.shields.io/bundlephobia/min/@ezy/coerce-middleware.svg" alt="minified size" />
-<img src="https://img.shields.io/bundlephobia/minzip/@ezy/coerce-middleware.svg" alt="minzipped size" />
+<a href="https://bundlephobia.com/result?p=@ezy/coerce-middleware">
+  <img src="https://img.shields.io/bundlephobia/min/@ezy/coerce-middleware.svg" alt="minified size" />
+</a>
+<a href="https://bundlephobia.com/result?p=@ezy/coerce-middleware">
+  <img src="https://img.shields.io/bundlephobia/minzip/@ezy/coerce-middleware.svg" alt="minzipped size" />
+</a>
 </p>
 
 ## Why
