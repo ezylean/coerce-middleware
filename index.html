@@ -67,7 +67,7 @@
 				<h1 align="center">
 					<img src="https://fakeimg.pl/900x300/ffffff/333333/?text=coerce+middleware&font=museo" alt="coerce middleware" width="900px" />
 				</h1>
-				<p align="center">coerce req.query or req.params or any other property in req object.</p>
+				<p align="center">coerce req.query, req.params or req.body</p>
 				<p align="center">
 					<a href="https://opensource.org/licenses">
 						<img src="https://img.shields.io/github/license/ezylean/coerce-middleware.svg" alt="License" />
@@ -102,11 +102,15 @@
 					<a href="https://npm.runkit.com/@ezy/coerce-middleware">
 						<img src="https://img.shields.io/badge/runkit-try%20now-%236967CA.svg" alt="Runkit: try now" />
 					</a>
-					<img src="https://img.shields.io/bundlephobia/min/@ezy/coerce-middleware.svg" alt="minified size" />
-					<img src="https://img.shields.io/bundlephobia/minzip/@ezy/coerce-middleware.svg" alt="minzipped size" />
+					<a href="https://bundlephobia.com/result?p=@ezy/coerce-middleware">
+						<img src="https://img.shields.io/bundlephobia/min/@ezy/coerce-middleware.svg" alt="minified size" />
+					</a>
+					<a href="https://bundlephobia.com/result?p=@ezy/coerce-middleware">
+						<img src="https://img.shields.io/bundlephobia/minzip/@ezy/coerce-middleware.svg" alt="minzipped size" />
+					</a>
 				</p>
 				<h2 id="why">Why</h2>
-				<p>Validation logic become simpler when it&#39;s possible to expect &quot;typed&quot; datas, but any datas parsed from url like req.query or req.params are strings.</p>
+				<p>Validation logic become simpler when it&#39;s possible to expect &quot;typed&quot; datas, but datas parsed from url like req.query or req.params are strings.</p>
 				<h2 id="install">Install</h2>
 				<pre><code class="language-shell">npm i @ezy/coerce-middleware</code></pre>
 				<h2 id="usage">Usage</h2>
@@ -171,6 +175,9 @@ app.listen(<span class="hljs-number">3000</span>);
 						<a href="globals.html#coerce" class="tsd-kind-icon">coerce</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#deepmap" class="tsd-kind-icon">deep<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#defaultcoerceprimitive" class="tsd-kind-icon">default<wbr>Coerce<wbr>Primitive</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
@@ -178,6 +185,9 @@ app.listen(<span class="hljs-number">3000</span>);
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#isint" class="tsd-kind-icon">is<wbr>Int</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#isprimitive" class="tsd-kind-icon">is<wbr>Primitive</a>
 					</li>
 				</ul>
 			</nav>
