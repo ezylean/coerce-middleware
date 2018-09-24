@@ -40,7 +40,6 @@ test('coerce messy object', t => {
       distance: '125.86',
       id: 12,
       name: 'lorem ipsum',
-      someField: undefined,
       someOtherField: 'null'
     }
   } as any;
@@ -49,7 +48,6 @@ test('coerce messy object', t => {
     distance: 125.86,
     id: 12,
     name: 'lorem ipsum',
-    someField: undefined,
     someOtherField: null
   };
 
@@ -87,4 +85,28 @@ test('use custom coercePrimitive function', t => {
   };
 
   mw(req, res, next);
+});
+
+test('dont change anything on primitive/undefined property', t => {
+  const mw = coerce('method');
+
+  const req: IncomingMessage = { method: 'GET' } as any;
+  const res: ServerResponse = {} as any;
+
+  const next = (e?: Error) => {
+    t.deepEqual(e, undefined);
+    t.deepEqual(req, { method: 'GET' } as any);
+  };
+
+  mw(req, res, next);
+
+  const req2: IncomingMessage = {} as any;
+  const res2: ServerResponse = {} as any;
+
+  const next2 = (e?: Error) => {
+    t.deepEqual(e, undefined);
+    t.deepEqual(req2, {} as any);
+  };
+
+  mw(req2, res2, next2);
 });

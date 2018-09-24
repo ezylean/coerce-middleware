@@ -2,7 +2,7 @@
   <img src="https://fakeimg.pl/900x300/ffffff/333333/?text=coerce+middleware&font=museo" alt="coerce middleware" width="900px" />
 </h1>
 
-<p align="center">coerce req.query or req.params or any other property in req object.</p>
+<p align="center">coerce req.query, req.params or req.body</p>
 
 <p align="center">
 <a href="https://opensource.org/licenses">

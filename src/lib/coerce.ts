@@ -1,4 +1,4 @@
-import deepMap from 'deep-map';
+import { from as fromDesc, to as toDesc } from '@ezy/object-description';
 import { IncomingMessage, ServerResponse } from 'http';
 
 /**
@@ -42,6 +42,10 @@ export function coerce(
     res: ServerResponse,
     next: (e?: Error) => void
   ) => {
+    if (isPrimitive(req[property])) {
+      return next();
+    }
+
     try {
       req[property] = deepMap(req[property], value => {
         return typeof value === 'string' ? coercePrimitive(value) : value;
@@ -52,6 +56,31 @@ export function coerce(
       next(error);
     }
   };
+}
+
+/**
+ * check if a given value is a javascript primitive
+ */
+function isPrimitive(value) {
+  return value !== Object(value);
+}
+
+/**
+ * a map-like function for primitives in nested object or array
+ *
+ * @param object    any object/array.
+ * @param mapFn     function to apply on primitive values.
+ * @returns         the mapped object/array.
+ */
+function deepMap(object, mapFn: (value) => any): any {
+  const desc = toDesc(object);
+
+  const primitives = desc.primitives.map(primitive => {
+    primitive.value = mapFn(primitive.value);
+    return primitive;
+  });
+
+  return fromDesc({ is_array: desc.is_array, primitives });
 }
 
 /**

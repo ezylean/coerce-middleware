@@ -58,7 +58,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "deep-map": "^1.5.0"
+    "@ezy/object-description": "^2.0.6"
   },
   "devDependencies": {
     "ava": "1.0.0-beta.7",
