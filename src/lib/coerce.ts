@@ -80,7 +80,7 @@ function deepMap(object, mapFn: (value) => any): any {
     return primitive;
   });
 
-  return fromDesc({ is_array: desc.is_array, primitives });
+  return fromDesc({ ...desc, primitives });
 }
 
 /**
