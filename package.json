@@ -2,7 +2,6 @@
   "name": "@ezy/coerce-middleware",
   "version": "2.1.0",
   "description": "coerce any property in req object",
-  "private": true,
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
