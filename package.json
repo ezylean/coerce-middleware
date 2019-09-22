@@ -2,6 +2,7 @@
   "name": "@ezy/coerce-middleware",
   "version": "2.0.1",
   "description": "coerce any property in req object",
+  "private": true,
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
@@ -58,7 +59,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "@ezy/object-description": "^3.0.0"
+    "@ezy/object-description": "^6.0.0"
   },
   "devDependencies": {
     "ava": "1.0.0-beta.7",

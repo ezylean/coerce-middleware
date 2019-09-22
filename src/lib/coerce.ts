@@ -1,3 +1,4 @@
+// tslint:disable:prefer-for-of
 import { from as fromDesc, to as toDesc } from '@ezy/object-description';
 import { IncomingMessage, ServerResponse } from 'http';
 
@@ -31,10 +32,10 @@ import { IncomingMessage, ServerResponse } from 'http';
  * @returns                   a connect-style middleware
  */
 export function coerce(
-  property: string,
+  properties: string | string[],
   coercePrimitive: (
     value: string
-  ) => string | number | boolean | void = defaultCoercePrimitive
+  ) => string | number | boolean | Date | void = defaultCoercePrimitive
 ) {
   return (
     req: IncomingMessage,
@@ -42,18 +43,26 @@ export function coerce(
     res: ServerResponse,
     next: (e?: Error) => void
   ) => {
-    if (isPrimitive(req[property])) {
-      return next();
+    if (!Array.isArray(properties)) {
+      properties = [properties];
     }
 
-    try {
-      req[property] = deepMap(req[property], value => {
-        return typeof value === 'string' ? coercePrimitive(value) : value;
-      });
+    for (let index = 0; index < properties.length; index++) {
+      const property = properties[index];
+      if (isPrimitive(req[property])) {
+        return next();
+      }
 
-      next();
-    } catch (error) {
-      next(error);
+      try {
+        req[property] = deepMap(
+          req[property],
+          value => (typeof value === 'string' ? coercePrimitive(value) : value)
+        );
+
+        next();
+      } catch (error) {
+        next(error);
+      }
     }
   };
 }
@@ -75,23 +84,13 @@ function isPrimitive(value) {
 function deepMap(object, mapFn: (value) => any): any {
   const desc = toDesc(object);
 
-  const primitives = desc.primitives.map(primitive => {
+  const values = desc.values.map(primitive => {
     primitive.value = mapFn(primitive.value);
     return primitive;
   });
 
-  return fromDesc({ ...desc, primitives });
+  return fromDesc({ ...desc, values });
 }
-
-/**
- * check if a given value is actually an integer
- */
-const isInt = (value: string) => /^[0-9]+$/.test(value);
-
-/**
- * check if a given value is actually a decimal number
- */
-const isDecimal = (value: string) => /^([0-9]+)?\.[0-9]+$/.test(value);
 
 /**
  * coerce a stringified primitive value
@@ -100,20 +99,29 @@ const isDecimal = (value: string) => /^([0-9]+)?\.[0-9]+$/.test(value);
  * @returns       the same value type converted.
  */
 function defaultCoercePrimitive(value: string) {
-  if (value === 'null') {
-    return null;
+  if (value) {
+    if (value === 'null') {
+      return null;
+    }
+
+    if (value === 'true') {
+      return true;
+    }
+
+    if (value === 'false') {
+      return false;
+    }
+
+    const num = Number(value);
+    if (!isNaN(num)) {
+      return num;
+    }
+
+    const date = new Date(value);
+    if (!isNaN(date as any)) {
+      return date;
+    }
   }
-  if (value === 'true') {
-    return true;
-  }
-  if (value === 'false') {
-    return false;
-  }
-  if (isDecimal(value)) {
-    return parseFloat(value);
-  }
-  if (isInt(value)) {
-    return parseInt(value, 10);
-  }
+
   return value;
 }

@@ -11,16 +11,22 @@ test('coerce stringified values', t => {
     query: {
       aborted: 'false',
       agree_terms: 'true',
+      longDate: '2019-09-22T13:23:05.254Z',
       name: 'lorem ipsum',
-      owner_id: '56'
+      owner_id: '56',
+      price: '24.99',
+      shortDate: '2019-09-22'
     }
   } as any;
 
   const expected = {
     aborted: false,
     agree_terms: true,
+    longDate: new Date('2019-09-22T13:23:05.254Z'),
     name: 'lorem ipsum',
-    owner_id: 56
+    owner_id: 56,
+    price: 24.99,
+    shortDate: new Date('2019-09-22')
   };
 
   const res: ServerResponse = {} as any;
